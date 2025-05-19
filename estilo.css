@@ -18,7 +18,8 @@ h2{
 }
 
 #avarage{
-    margin: 16px 0;
+    width: fit-content;
+    margin: 16px auto;
     padding: 10px;
     background-color: #d2d8e4;
     border: 3px solid rgb(9, 174, 240);
@@ -59,7 +60,7 @@ form input{
     border-radius: 4px;
 }
 
-button[type="submit"]{
+button{
     background-color: rgb(9, 174, 240);
     color: white;
     padding: 10px 16px;
@@ -69,7 +70,7 @@ button[type="submit"]{
     font-weight: bold;
 }
 
-button[type="submit"]:hover{
+button:hover{
     background-color: rgb(8, 115, 157);
 }
 
@@ -79,7 +80,6 @@ button[type="submit"]:hover{
     position: relative;
     z-index: 1;
 }
-
 
 
 #studentsTable{
