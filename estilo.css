@@ -4,21 +4,20 @@
     box-sizing: border-box;
 }
 
-body {
+body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 30px;
     background-color: #f9f9f9;
     color: #333;
 }
 
-
-h2 {
+h2{
     color: #000000;
     margin-bottom: 20px;
     text-align: center;
 }
 
-#avarage {
+#avarage{
     margin: 16px 0;
     padding: 10px;
     background-color: #d2d8e4;
@@ -30,8 +29,7 @@ h2 {
     text-align: center;
 }
 
-
-form {
+form{
     background-color: white;
     padding: 20px;
     border: 3px solid rgb(9, 174, 240);
@@ -42,11 +40,11 @@ form {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-form div {
+form div{
     margin-bottom: 15px;
 }
 
-form label {
+form label{
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -54,15 +52,14 @@ form label {
 
 }
 
-form input {
+form input{
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-
-button[type="submit"] {
+button[type="submit"]{
     background-color: rgb(9, 174, 240);
     color: white;
     padding: 10px 16px;
@@ -72,9 +69,10 @@ button[type="submit"] {
     font-weight: bold;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover{
     background-color: rgb(8, 115, 157);
 }
+
 .container{
     width: 50%;
     margin: 0 auto;
@@ -84,7 +82,7 @@ button[type="submit"]:hover {
 
 
 
-#studentsTable {
+#studentsTable{
     width: 100%;
     border-collapse: collapse;
     background-color: white;
@@ -93,30 +91,30 @@ button[type="submit"]:hover {
     overflow: hidden;
 }
 
-#studentsTable th {
+#studentsTable th{
     background-color: rgb(9, 174, 240);
     color: white;
     text-align: left;
     padding: 10px;
 }
 
-#studentsTable td {
+#studentsTable td{
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
 
 
-@media (max-width: 600px) {
-    form, #studentsTable {
+@media (max-width: 600px){
+    form, #studentsTable{
         width: 100%;
         font-size: 14px;
     }
 
-    form input {
+    form input{
         font-size: 14px;
     }
 
-    #avarage {
+    #avarage{
         font-size: 18px;
     }
 }
