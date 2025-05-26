@@ -1,9 +1,11 @@
 const students=[]
 const tableBody=document.querySelector("#studentsTable tbody")
 const avarageDiv=document.getElementById("avarage");
+let editstudent=null;
 
 document.getElementById("studentForm").addEventListener("submit",function(e){
     e.preventDefault();
+
     const name=document.getElementById("name").value.trim();
     const lastName=document.getElementById("lastName").value.trim();
     const fecha=document.getElementById("fecha").value.trim();
@@ -14,36 +16,66 @@ document.getElementById("studentForm").addEventListener("submit",function(e){
         return
     }
 
-    const student={name,lastName,fecha,grade};
 
-    students.push(student);
-    //console.log(students);
-    addStudentToTable(student)
+    if(editstudent!==null){
+        const index=students.findIndex(s=> s.id === editstudent);
+        if(index!==-1){
+            students[index]={id: editstudent, name, lastName, fecha, grade};
+            const row=tableBody.querySelector(`tr[data-id="${editstudent}"]`);
+            row.querySelector(".name-column").textContent=name;
+            row.querySelector(".lastName-column").textContent=lastName;
+            row.querySelector(".fecha-column").textContent=fecha;
+            row.querySelector(".grade-column").textContent=grade;
+        }
+        editstudent=null;
+    }else{
+        const student={id: Date.now(), name, lastName, fecha, grade}; 
+        students.push(student);
+        addStudentToTable(student);
+    }
     promedio()
     this.reset()
 });
 
 function addStudentToTable(student){
     const row=document.createElement("tr");
+    row.setAttribute("data-id", student.id);
     row.innerHTML=`
-        <td>${student.name}</td>
-        <td>${student.lastName}</td>
-        <td>${student.fecha}</td>
-        <td>${student.grade}</td>
+        <td class="name-column">${student.name}</td>
+        <td class="lastName-column">${student.lastName}</td>
+        <td class="fecha-column">${student.fecha}</td>
+        <td class="grade-column">${student.grade}</td>
+        <td> <button class="edit-btn">Editar</button></td>
         <td> <button class="delete-btn">Eliminar</button></td>`;
-        row.querySelector(".delete-btn").addEventListener("click",function(){
-            deleteEstudiante(student,row);
-
+    row.querySelector(".edit-btn").addEventListener("click",function(){
+        const estudianteEditado=students.find(s=> s.id === student.id);
+        editarEstudiante(estudianteEditado);
         });
+    row.querySelector(".delete-btn").addEventListener("click",function(){
+        deleteEstudiante(student.id,row);
+        });
+        
     tableBody.appendChild(row);
 }
 
-function deleteEstudiante(student,row){
-    const index=students.indexOf(student);
-    if(index>-1){
-        students.splice(index,1);
-        promedio();
+function editarEstudiante(student){
+    editstudent=student.id;
+    document.getElementById("name").value=student.name;
+    document.getElementById("lastName").value=student.lastName;
+    document.getElementById("fecha").value=student.fecha;
+    document.getElementById("grade").value=student.grade;
+}
+
+function deleteEstudiante(studentID,row){
+    const index=students.findIndex(s=> s.id === studentID);
+    if(index!==-1){
+        students.splice(index, 1);
         row.remove();
+        promedio();
+    }
+    if (editstudent===studentID){
+        editstudent=null;
+        document.getElementById("studentForm").reset();
     }
 }
 
@@ -56,4 +88,3 @@ function promedio(){
     const prom=total/students.length;
     avarageDiv.textContent="Promedio General del Curso: "+prom.toFixed(2);
 }
-
