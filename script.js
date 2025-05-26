@@ -1,6 +1,9 @@
 const students=[]
 const tableBody=document.querySelector("#studentsTable tbody")
 const avarageDiv=document.getElementById("avarage");
+const CantidadDiv=document.getElementById("Cantidad");
+const aprobadosDiv=document.getElementById("Aprobados");
+const desaprobadosDiv=document.getElementById("Reprobados");
 let editstudent=null;
 
 document.getElementById("studentForm").addEventListener("submit",function(e){
@@ -54,7 +57,7 @@ function addStudentToTable(student){
     row.querySelector(".delete-btn").addEventListener("click",function(){
         deleteEstudiante(student.id,row);
         });
-        
+    CantidadDiv.textContent="Cantidad de Estudiantes: "+students.length;
     tableBody.appendChild(row);
 }
 
@@ -77,14 +80,23 @@ function deleteEstudiante(studentID,row){
         editstudent=null;
         document.getElementById("studentForm").reset();
     }
+    CantidadDiv.textContent="Cantidad de Estudiantes: "+students.length;
 }
 
 function promedio(){
     if(students.length===0){
         avarageDiv.textContent="Promedio General del Curso: N/A"
+        aprobadosDiv.textContent="Aprobados: N/A";
+        desaprobadosDiv.textContent="Desaprobados: N/A";
+        CantidadDiv.textContent="Cantidad de Estudiantes: 0";
         return  
     }
     const total=students.reduce((sum,student)=>sum+student.grade,0)
     const prom=total/students.length;
     avarageDiv.textContent="Promedio General del Curso: "+prom.toFixed(2);
+
+    const aprobados=students.filter(student => student.grade >= 4).length;
+    const desaprobados=students.length - aprobados;
+    aprobadosDiv.textContent="Aprobados: " + aprobados;
+    desaprobadosDiv.textContent="Desaprobados: " + desaprobados;
 }

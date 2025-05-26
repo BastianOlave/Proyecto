@@ -30,6 +30,32 @@ h2{
     text-align: center;
 }
 
+#Cantidad{
+    width: fit-content;
+    margin: 16px auto;
+    padding: 10px;
+    background-color: #d2d8e4;
+    border: 3px solid rgb(9, 174, 240);
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(9, 174, 240);
+    text-align: center;
+}
+
+#Estadisticas{
+    width: fit-content;
+    margin: 16px auto;
+    padding: 10px;
+    background-color: #d2d8e4;
+    border: 3px solid rgb(9, 174, 240);
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(9, 174, 240);
+    text-align: center;
+}
+
 form{
     background-color: white;
     padding: 20px;
